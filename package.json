@@ -1,0 +1,32 @@
+{
+  "name": "i-http-rpc",
+  "version": "1.0.0",
+  "description": "一个方便不同项目合作的带智能提示的 http rpc 约定",
+  "main": "dist/httpRpc.js",
+  "types": "src/httpRpc.ts",
+  "deprecated": false,
+  "author": {
+    "name": "ahuang"
+  },
+  "homepage": "https://github.com/ahuangege/i-http-rpc#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ahuangege/i-http-rpc.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ahuangege/i-http-rpc/issues"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bundleDependencies": [],
+  "dependencies": {
+    "@types/node": "^18.7.16"
+  },
+  "keywords": [
+    "rpc",
+    "http",
+    "http-rpc"
+  ],
+  "license": "MIT"
+}
