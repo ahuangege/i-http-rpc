@@ -1,7 +1,7 @@
 {
   "name": "i-http-rpc",
-  "version": "1.0.0",
-  "description": "一个方便不同项目合作的带智能提示的 http rpc 约定",
+  "version": "1.1.0",
+  "description": "一个带智能提示的 http rpc",
   "main": "dist/httpRpc.js",
   "types": "src/httpRpc.ts",
   "deprecated": false,
@@ -26,7 +26,8 @@
   "keywords": [
     "rpc",
     "http",
-    "http-rpc"
+    "http-rpc",
+    "json"
   ],
   "license": "MIT"
 }

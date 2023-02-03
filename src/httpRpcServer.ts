@@ -1,5 +1,3 @@
-import * as path from "path";
-import * as fs from "fs";
 import * as http from "http";
 import * as https from "https";
 
@@ -9,17 +7,17 @@ let errList = {
     needJson: JSON.stringify({ "err": "need Json" }),
 }
 
-export class HttpRpcServer {
+export class HttpRpcServer<T> {
 
     private handlers: { [file: string]: { [method: string]: Function } } = {};
 
-    constructor(initOptions: I_initOptionsServer) {
+    constructor(initOptions: I_initOptionsServer<T>) {
         this.start(initOptions);
     }
 
-    private start(initOptions: I_initOptionsServer) {
+    private start(initOptions: I_initOptionsServer<T>) {
 
-        this.loadMsgHandler(initOptions.msgPath);
+        this.handlers = initOptions.handlers as any;
 
         let isHttps = !!initOptions.ssl;
         let httpCon = isHttps ? https : http;
@@ -76,29 +74,12 @@ export class HttpRpcServer {
             console.log(err);
         });
     }
-
-    private loadMsgHandler(msgPath: string) {
-        let exists = fs.existsSync(msgPath);
-        if (exists) {
-            fs.readdirSync(msgPath).forEach((filename) => {
-                if (!filename.endsWith(".js")) {
-                    return;
-                }
-                let name = path.basename(filename, '.js');
-                let handler = require(path.join(msgPath, filename));
-                if (handler.default && typeof handler.default === "function") {
-                    this.handlers[name] = new handler.default();
-                }
-            });
-        }
-    }
-
 }
 
 
-export interface I_initOptionsServer {
+export interface I_initOptionsServer<T> {
     port: number,
-    msgPath: string,
+    handlers: T,
     ssl?: { "key": any, "cert": any },
     headers?: { [key: string]: any },
     server?: any,   // 自定义 rpc server

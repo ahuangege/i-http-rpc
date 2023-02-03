@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "@types/node": "^18.7.16",
-    "i-http-rpc": "^1.0.0"
-  }
-}
